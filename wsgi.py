@@ -52,9 +52,9 @@ def classify_image(image_url):
         return results
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/classify/', methods=['POST'])
+@application.route('/classify/', methods=['POST'])
 def photoRecognize():
     #answer = classify_image(request.form['image_data'])
     print (os.getcwd())
@@ -64,9 +64,9 @@ def photoRecognize():
     return render_template('index.html', text_to_render=answer)
 
 
-@app.route("/")
+@application.route("/")
 def main():
     return render_template('index.html')
 
 if __name__ == "__main__":
-   app.run()
+   application.run()
