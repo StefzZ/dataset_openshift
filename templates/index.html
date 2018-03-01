@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+Inserisci url immagine:<br>
+<!--<form action="/classify/" method="post">
+
+!-->
+
+<form action="/classify/" method="post">
+
+<input id="inp" type="text" name="image_data" value="">
+<br>
+<br><br>
+
+    <button name="forwardBtn" type="submit">Classifica</button>
+</form>
+
+<p id="demo">{{ text_to_render }}</p>
+
+<script>
+function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
+}
+
+function send_and_get_results(){
+    var image_data = document.getElementById("inp").innerHTML
+
+    $.ajax({
+					url: 'http://127.0.0.1:5000/classify/',
+          data : {'image_data' : image_data},
+					method: 'POST',
+					success: function(data) {
+						 document.getElementById("demo").innerHTML = "fatto";
+					}
+		});
+
+
+
+}
+</script>
+
+</body>
+</html>
