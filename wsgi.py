@@ -10,7 +10,7 @@ def create_graph():
     with tf.gfile.FastGFile("retrained_graph.pb", 'rb') as f:
        if os.path.isfile("retrained_graph.pb"):
           print("esiste")
-      else:
+       else:
           print("non esiste")
        graph_def = tf.GraphDef()
        graph_def.ParseFromString(f.read())
