@@ -7,7 +7,7 @@ import sys
 import os
 
 def create_graph():
-    with tf.gfile.FastGFile("app/retrained_graph.pb", 'rb') as f:
+    with tf.gfile.FastGFile("retrained_graph.pb", 'rb') as f:
        graph_def = tf.GraphDef()
        graph_def.ParseFromString(f.read())
        _ = tf.import_graph_def(graph_def, name='')
@@ -33,7 +33,7 @@ def classify_image(image_url):
         top_k = predictions.argsort()[-len(predictions):][::-1]
 
         label_lines = [line.rstrip() for line
-                   in tf.gfile.GFile("app/labels.txt")]
+                   in tf.gfile.GFile("labels.txt")]
 
         results = []
 
